@@ -132,14 +132,14 @@ if __name__ == "__main__":
             except Exception as e:
                 pass
         data = data.drop_duplicates(subset=["arxiv_id"], keep="first")
-        data.to_json("./data/"+start_date + "-"+end_date +
-                     ".json", orient='records', lines=True)
+        data.to_csv("./data/"+start_date + "-"+end_date +
+                     ".csv", index=False)
         '''
         read file from the local file and upload to s3
         {remove this code if you don't want to push data to s3}
         '''
         s3.Bucket(S3_BUCKET_NAME).upload_file(
-            "./data/" + start_date + "-" + end_date + ".json", url_path + "/" + start_date + "-" + end_date + ".json")
+            "./data/" + start_date + "-" + end_date + ".csv", url_path + "/" + start_date + "-" + end_date + ".csv")
     except Exception as e:
         print(e)
         '''
