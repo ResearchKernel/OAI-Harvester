@@ -115,9 +115,9 @@ if __name__ == "__main__":
     url_path = "arxiv/"+str(dt.now().year)+"/daily_data"
     start_date = dt.today().strftime('%Y-%m-%d')
     end_date = dt.today().strftime('%Y-%m-%d')
-    categories = ['eess']
-    # categories = ['eess', 'econ', 'math', 'cs', 'physics', 'physics:astro-ph', 'physics:cond-mat', 'physics:gr-qc', 'physics:hep-ex', 'physics:hep-lat', 'physics:hep-ph',
-    #               'physics:hep-th', 'physics:math-ph', 'physics:nlin', 'physics:nucl-ex', 'physics:nucl-th', 'physics:physics', 'physics:quant-ph', 'q-bio', 'q-fin', 'stat']
+    # categories = ['eess']
+    categories = ['eess', 'econ', 'math', 'cs', 'physics', 'physics:astro-ph', 'physics:cond-mat', 'physics:gr-qc', 'physics:hep-ex', 'physics:hep-lat', 'physics:hep-ph',
+                  'physics:hep-th', 'physics:math-ph', 'physics:nlin', 'physics:nucl-ex', 'physics:nucl-th', 'physics:physics', 'physics:quant-ph', 'q-bio', 'q-fin', 'stat']
     data = pd.DataFrame()
 
     try:
