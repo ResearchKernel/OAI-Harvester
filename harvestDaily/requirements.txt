@@ -3,3 +3,4 @@ boto3
 beautifulsoup4
 python-dotenv
 s3fs
+awscli

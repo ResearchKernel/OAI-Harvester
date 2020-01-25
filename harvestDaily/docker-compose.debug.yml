@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  harvestdaily:
+    image: harvestdaily
+    build:
+      context: .
+      dockerfile: Dockerfile

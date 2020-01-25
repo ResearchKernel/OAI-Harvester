@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
+import logging
 OAI = "{http://www.openarchives.org/OAI/2.0/}"
 ARXIV = "{http://arxiv.org/OAI/arXiv/}"
 
@@ -109,9 +110,8 @@ def harvest(arxiv, start_date, end_date):
 
 
 if __name__ == "__main__":
-
-    s3 = boto3.client('s3')
-    S3_BUCKET_NAME = "s3://researchkernel-harvesting"
+    s3 = boto3.resource('s3')
+    S3_BUCKET_NAME = "researchkernel-harvesting"
     url_path = "arxiv/"+str(dt.now().year)+"/daily_data"
     start_date = dt.today().strftime('%Y-%m-%d')
     end_date = dt.today().strftime('%Y-%m-%d')
@@ -141,11 +141,11 @@ if __name__ == "__main__":
         '''
         s3.Bucket(S3_BUCKET_NAME).upload_file(
             "./data/" + start_date + ".json", url_path + "/" + start_date + ".json")
+        print("Saved data to s3")
 
     except Exception as e:
+        print(e)
 
         '''
         Integration with AWS Lambda need to be done for relaunching this script if it fails
         '''
-    finally:
-        pass
